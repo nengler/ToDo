@@ -1,0 +1,41 @@
+.todo {
+  background-color: $todo-background;
+  padding: 2rem 1rem;
+  max-width: 85%;
+  display: grid;
+  grid-template-columns: 1fr repeat(1, auto) 1fr;
+  grid-column-gap: 5px;
+  justify-items: center;
+  margin: auto;
+  border-radius: 0.5rem;
+  color: white;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.todo-header {
+  align-self: center;
+  grid-column-start: 2;
+}
+
+.delete-button-holder {
+  margin-left: auto;
+}
+
+.delete-button {
+  background-color: $todo-background;
+  color: white;
+  border: 0;
+  font-size: 2rem;
+}
+
+.delete-button:hover {
+  color: $todo-background;
+  background-color: white;
+}
+
+@media (min-width: 575.98px) {
+  .todo {
+    max-width: 70%;
+  }
+}

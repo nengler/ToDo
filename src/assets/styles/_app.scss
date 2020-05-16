@@ -1,0 +1,99 @@
+.container {
+  max-width: 95%;
+  margin: auto;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.show-todo {
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.todo-form {
+  margin: 1rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  input {
+    margin-right: 0.5rem;
+    margin-left: 0.25rem;
+  }
+  label {
+    margin-right: 0.25rem;
+  }
+}
+
+input {
+  transition: 0.3s all;
+  padding: 0.5rem 0.75rem;
+  width: 50%;
+  border: 1px solid $input-border;
+  display: inline-block;
+  border-radius: 0.3em;
+}
+
+input:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px $button-background;
+}
+
+.create-todo-button {
+  width: 90%;
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem 0.8rem;
+  font-size: 1.01rem;
+  border-radius: 0.25rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: 0;
+  letter-spacing: 0.05rem;
+  background-color: white;
+  color: $button-background;
+  border: 0.1rem solid $button-background;
+}
+
+button:hover {
+  color: white;
+  background-color: $button-background;
+}
+
+@media (min-width: 575.98px) {
+  .container {
+    max-width: 95%;
+  }
+  .create-todo-button {
+    width: auto;
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (min-width: 767.98px) {
+  .container {
+    max-width: 90%;
+  }
+}
+
+// Medium devices (tablets, less than 992px)
+@media (min-width: 991.98px) {
+  .container {
+    max-width: 85%;
+  }
+}
+
+@media (min-width: 1199.98px) {
+  .container {
+    max-width: 80%;
+  }
+}
