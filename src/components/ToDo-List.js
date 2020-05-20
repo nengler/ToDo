@@ -67,9 +67,17 @@ class ToDoList extends Component {
 
   onChangeTodoStatus = (todoId) => {
     this.setState((prevState) => ({
-      toDoList: prevState.toDoList.map((todo) =>
-        todo.id === todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo
-      ),
+      toDoList: prevState.toDoList.map((todo) => {
+        if (todo.id === todoId) {
+          if (todo.isCompleted === false) {
+            todo.progress.forEach((progress) => {
+              progress.isCompleted = true;
+            });
+          }
+          return { ...todo, isCompleted: !todo.isCompleted };
+        }
+        return todo;
+      }),
     }));
   };
 

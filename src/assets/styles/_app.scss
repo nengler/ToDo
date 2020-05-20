@@ -1,5 +1,5 @@
 .container {
-  max-width: 95%;
+  max-width: 90%;
   margin: auto;
   padding: 2.5rem 0;
   text-align: center;
@@ -74,9 +74,15 @@ button:focus {
   font-size: 1.25rem;
 }
 
+@media (max-width: 575.98px) {
+  .button-sm-full {
+    width: 100%;
+  }
+}
+
 @media (min-width: 575.98px) {
   .container {
-    max-width: 95%;
+    max-width: 90%;
   }
   .create-todo-button {
     width: auto;

@@ -1,6 +1,5 @@
 .new-progress {
   display: flex;
-  max-width: 80%;
   margin: auto;
   flex-wrap: wrap;
   justify-content: center;
@@ -23,14 +22,11 @@
   align-items: center;
   border: 3px solid $progress-background;
   background-color: white;
-  max-width: 80%;
   padding: 1rem 1rem;
-  max-width: 85%;
   display: grid;
   grid-template-columns: 1fr repeat(1, auto) 1fr;
   grid-column-gap: 5px;
   justify-items: center;
-  margin: auto;
   border-radius: 0.5rem;
   color: $progress-background;
   margin-bottom: 2rem;
@@ -44,13 +40,4 @@
 .progress-button:hover {
   background-color: $progress-background;
   color: white;
-}
-
-@media (min-width: 575.98px) {
-  .progress {
-    max-width: 65%;
-  }
-  .new-progress {
-    max-width: 65%;
-  }
 }

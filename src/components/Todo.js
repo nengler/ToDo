@@ -63,33 +63,35 @@ class Todo extends Component {
   render() {
     return (
       <div className="todo-and-progress">
-        <div className="todo">
-          <button
-            className="todo-button delete-button"
-            onClick={() => this.props.onDelete(this.props.todo.id)}
-          >
-            ×
-          </button>
-          <button
-            onClick={() => this.props.changeTodoStatus(this.props.todo.id)}
-            className="status-button todo-button"
-          >
-            {this.props.todo.isCompleted ? (
-              <span>&#10004; </span>
-            ) : (
-              <span>×</span>
-            )}
-          </button>
-          <div className="todo-header">
-            <h2>{this.props.todo.name}</h2>
-          </div>
-          <div className="button-holder">
+        <div className="todo-container">
+          <div className="todo">
             <button
-              className="todo-button first-button"
-              onClick={() => this.showProgress()}
+              className="todo-button delete-button"
+              onClick={() => this.props.onDelete(this.props.todo.id)}
             >
-              Progress
+              ×
             </button>
+            <button
+              onClick={() => this.props.changeTodoStatus(this.props.todo.id)}
+              className="status-button todo-button"
+            >
+              {this.props.todo.isCompleted ? (
+                <span>&#10004; </span>
+              ) : (
+                <span>×</span>
+              )}
+            </button>
+            <div className="todo-header">
+              <h2>{this.props.todo.name}</h2>
+            </div>
+            <div className="button-holder">
+              <button
+                className="todo-button first-button"
+                onClick={() => this.showProgress()}
+              >
+                Progress
+              </button>
+            </div>
           </div>
         </div>
 
@@ -125,18 +127,17 @@ class Todo extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  <button>Submit</button>
+                  <button className="button-sm-full">Submit</button>
                 </form>
-                <button onClick={() => this.changeProgressState()}>
-                  Cancel
-                </button>
               </div>
             )}
-            {!this.state.showAddProgressInputs && (
-              <button onClick={() => this.changeProgressState()}>
-                Add New Progress
-              </button>
-            )}
+
+            <button
+              className="button-sm-full"
+              onClick={() => this.changeProgressState()}
+            >
+              {this.state.showAddProgressInputs ? "Cancel" : "Add New Progress"}
+            </button>
           </div>
         )}
       </div>

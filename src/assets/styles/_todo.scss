@@ -1,12 +1,15 @@
+.todo-container {
+  max-width: 100%;
+  margin: auto;
+}
+
 .todo {
   background-color: $todo-background;
   padding: 2rem 1rem;
-  max-width: 85%;
   display: grid;
   grid-template-columns: 1fr repeat(1, auto) 1fr;
   grid-column-gap: 5px;
   justify-items: center;
-  margin: auto;
   border-radius: 0.5rem;
   color: white;
   position: relative;
@@ -58,8 +61,16 @@
   margin: 1rem 0;
 }
 
+.progress-holder {
+  max-width: 85%;
+  margin: auto;
+}
+
 @media (min-width: 575.98px) {
-  .todo {
+  .todo-container {
     max-width: 70%;
+  }
+  .progress-container {
+    max-width: 65%;
   }
 }
