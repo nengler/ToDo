@@ -4,17 +4,19 @@
   margin: auto;
   flex-wrap: wrap;
   justify-content: center;
-  div {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem 0.25rem;
-  }
+
   button {
     margin: 0.5rem 0 0.75rem 0;
   }
   .react-datepicker__input-container {
     margin: 0;
   }
+}
+
+.form-div {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0.25rem;
 }
 
 .progress {
@@ -37,7 +39,6 @@
 .progress-button {
   color: $progress-background;
   background-color: white;
-  border: 0;
 }
 
 .progress-button:hover {

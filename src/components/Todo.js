@@ -27,11 +27,18 @@ class Todo extends Component {
   showProgress = () => {
     this.setState((prevProps) => ({
       showProgress: !prevProps.showProgress,
+      showAddProgressInputs: false,
+      progressGoal: "",
+      progressDate: new Date(),
     }));
   };
 
-  addProgress = () => {
-    this.setState({ showAddProgressInputs: true });
+  changeProgressState = () => {
+    this.setState((prevProps) => ({
+      showAddProgressInputs: !prevProps.showAddProgressInputs,
+      progressGoal: "",
+      progressDate: new Date(),
+    }));
   };
 
   submitProgressForm = (event) => {
@@ -55,20 +62,33 @@ class Todo extends Component {
 
   render() {
     return (
-      <div>
+      <div className="todo-and-progress">
         <div className="todo">
+          <button
+            className="todo-button delete-button"
+            onClick={() => this.props.onDelete(this.props.todo.id)}
+          >
+            ×
+          </button>
+          <button
+            onClick={() => this.props.changeTodoStatus(this.props.todo.id)}
+            className="status-button todo-button"
+          >
+            {this.props.todo.isCompleted ? (
+              <span>&#10004; </span>
+            ) : (
+              <span>×</span>
+            )}
+          </button>
           <div className="todo-header">
             <h2>{this.props.todo.name}</h2>
           </div>
           <div className="button-holder">
-            <button className="todo-button" onClick={() => this.showProgress()}>
-              Progress
-            </button>
             <button
-              className="todo-button delete-button"
-              onClick={() => this.props.onDelete(this.props.todo.id)}
+              className="todo-button first-button"
+              onClick={() => this.showProgress()}
             >
-              ×
+              Progress
             </button>
           </div>
         </div>
@@ -84,27 +104,39 @@ class Todo extends Component {
               />
             ))}
             {this.state.showAddProgressInputs && (
-              <form className="new-progress" onSubmit={this.submitProgressForm}>
-                <div>
-                  <label>Completion Date</label>
-                  <DatePicker
-                    selected={this.state.progressDate}
-                    onChange={this.handleDateChange}
-                  />
-                </div>
-                <div>
-                  <label>Goal</label>
-                  <input
-                    type="text"
-                    name="progressGoal"
-                    value={this.state.progressGoal}
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <button>Submit</button>
-              </form>
+              <div>
+                <form
+                  className="new-progress"
+                  onSubmit={this.submitProgressForm}
+                >
+                  <div className="form-div">
+                    <label>Completion Date</label>
+                    <DatePicker
+                      selected={this.state.progressDate}
+                      onChange={this.handleDateChange}
+                    />
+                  </div>
+                  <div className="form-div">
+                    <label>Goal</label>
+                    <input
+                      type="text"
+                      name="progressGoal"
+                      value={this.state.progressGoal}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <button>Submit</button>
+                </form>
+                <button onClick={() => this.changeProgressState()}>
+                  Cancel
+                </button>
+              </div>
             )}
-            <button onClick={() => this.addProgress()}>Add New Progress</button>
+            {!this.state.showAddProgressInputs && (
+              <button onClick={() => this.changeProgressState()}>
+                Add New Progress
+              </button>
+            )}
           </div>
         )}
       </div>

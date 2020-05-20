@@ -18,33 +18,22 @@ class Progress extends Component {
   render() {
     return (
       <div className="progress">
-        {this.props.progress.isCompleted ? (
-          <button
-            onClick={() =>
-              this.props.changeProgressStatus(
-                true,
-                this.props.progress.id,
-                this.props.toDoId
-              )
-            }
-            className="progress-button completed"
-          >
-            &#10004;
-          </button>
-        ) : (
-          <button
-            onClick={() =>
-              this.props.changeProgressStatus(
-                true,
-                this.props.progress.id,
-                this.props.toDoId
-              )
-            }
-            className="progress-button not-completed"
-          >
-            ×
-          </button>
-        )}
+        <button
+          onClick={() =>
+            this.props.changeProgressStatus(
+              this.props.progress.id,
+              this.props.toDoId
+            )
+          }
+          className="status-button progress-button"
+        >
+          {this.props.progress.isCompleted ? (
+            <span>&#10004; </span>
+          ) : (
+            <span>×</span>
+          )}
+        </button>
+
         <span>{this.props.progress.goal}</span>
         <span>{this.formatDate()}</span>
       </div>

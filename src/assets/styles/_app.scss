@@ -69,6 +69,11 @@ button:focus {
   outline: none;
 }
 
+.status-button {
+  border: 0;
+  font-size: 1.25rem;
+}
+
 @media (min-width: 575.98px) {
   .container {
     max-width: 95%;

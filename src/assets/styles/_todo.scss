@@ -32,13 +32,30 @@
   margin: 0 0.1rem;
 }
 
+.first-button {
+  margin-right: 1rem;
+}
+
 .delete-button {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .todo-button:hover {
   color: $todo-background;
   background-color: white;
+}
+
+.delete-button:hover {
+  background-color: $todo-background;
+  color: $button-background;
+}
+
+.todo-and-progress {
+  margin: 1rem 0;
 }
 
 @media (min-width: 575.98px) {

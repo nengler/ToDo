@@ -42,6 +42,7 @@ class ToDoList extends Component {
     let toDoList = [...this.state.toDoList];
     for (let i = 0; i < toDoList.length; i++) {
       if (toDoList[i].id === todoId) {
+        progressObject.isCompleted = toDoList[i].isCompleted ? true : false;
         toDoList[i].progress.push(progressObject);
         this.setState({ toDoList });
         return;
@@ -49,18 +50,27 @@ class ToDoList extends Component {
     }
   };
 
-  onChangeProgressStatus = (newProgressStatus, progressId, todoId) => {
+  onChangeProgressStatus = (progressId, todoId) => {
     let toDoList = [...this.state.toDoList];
     toDoList.forEach((todo) => {
       if (todo.id === todoId) {
         todo.progress.forEach((progress) => {
           if (progress.id === progressId) {
+            console.log(progress);
             progress.isCompleted = !progress.isCompleted;
           }
         });
       }
     });
     this.setState({ toDoList });
+  };
+
+  onChangeTodoStatus = (todoId) => {
+    this.setState((prevState) => ({
+      toDoList: prevState.toDoList.map((todo) =>
+        todo.id === todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo
+      ),
+    }));
   };
 
   render() {
@@ -88,6 +98,7 @@ class ToDoList extends Component {
               addProgressToTodo={this.onAddProgressToToDo}
               onDelete={this.handleDeleteTodo}
               changeProgressStatus={this.onChangeProgressStatus}
+              changeTodoStatus={this.onChangeTodoStatus}
             />
           ))}
         </div>
