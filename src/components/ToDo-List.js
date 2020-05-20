@@ -38,6 +38,31 @@ class ToDoList extends Component {
     });
   };
 
+  onAddProgressToToDo = (progressObject, todoId) => {
+    let toDoList = [...this.state.toDoList];
+    for (let i = 0; i < toDoList.length; i++) {
+      if (toDoList[i].id === todoId) {
+        toDoList[i].progress.push(progressObject);
+        this.setState({ toDoList });
+        return;
+      }
+    }
+  };
+
+  onChangeProgressStatus = (newProgressStatus, progressId, todoId) => {
+    let toDoList = [...this.state.toDoList];
+    toDoList.forEach((todo) => {
+      if (todo.id === todoId) {
+        todo.progress.forEach((progress) => {
+          if (progress.id === progressId) {
+            progress.isCompleted = !progress.isCompleted;
+          }
+        });
+      }
+    });
+    this.setState({ toDoList });
+  };
+
   render() {
     return (
       <div className="container">
@@ -57,7 +82,13 @@ class ToDoList extends Component {
         </div>
         <div className="show-todo">
           {this.state.toDoList.map((todo) => (
-            <Todo key={todo.id} todo={todo} onDelete={this.handleDeleteTodo} />
+            <Todo
+              key={todo.id}
+              todo={todo}
+              addProgressToTodo={this.onAddProgressToToDo}
+              onDelete={this.handleDeleteTodo}
+              changeProgressStatus={this.onChangeProgressStatus}
+            />
           ))}
         </div>
       </div>

@@ -18,18 +18,25 @@
   grid-column-start: 2;
 }
 
-.delete-button-holder {
-  margin-left: auto;
+.button-holder {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.delete-button {
+.todo-button {
   background-color: $todo-background;
   color: white;
   border: 0;
+  margin: 0 0.1rem;
+}
+
+.delete-button {
   font-size: 2rem;
 }
 
-.delete-button:hover {
+.todo-button:hover {
   color: $todo-background;
   background-color: white;
 }
