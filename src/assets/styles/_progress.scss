@@ -19,6 +19,7 @@
 }
 
 .progress {
+  position: relative;
   align-items: center;
   border: 3px solid $progress-background;
   background-color: white;
@@ -35,9 +36,23 @@
 .progress-button {
   color: $progress-background;
   background-color: white;
+  border: 0;
 }
 
 .progress-button:hover {
   background-color: $progress-background;
   color: white;
+}
+
+.delete-button-progress {
+  font-size: 1.5rem;
+  padding: 0;
+  position: absolute;
+  top: 1px;
+  right: 0;
+}
+
+.delete-button-progress:hover {
+  color: $button-background;
+  background-color: white;
 }

@@ -74,6 +74,16 @@ button:focus {
   font-size: 1.25rem;
 }
 
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
 @media (max-width: 575.98px) {
   .button-sm-full {
     width: 100%;

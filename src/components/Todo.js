@@ -66,7 +66,7 @@ class Todo extends Component {
         <div className="todo-container">
           <div className="todo">
             <button
-              className="todo-button delete-button"
+              className="todo-button delete-button-todo"
               onClick={() => this.props.onDelete(this.props.todo.id)}
             >
               ×
@@ -97,12 +97,15 @@ class Todo extends Component {
 
         {this.state.showProgress && (
           <div className="progress-holder">
-            {this.props.todo.progress.map((p) => (
+            {this.props.todo.progress.map((p, index) => (
               <Progress
                 key={p.id}
                 changeProgressStatus={this.props.changeProgressStatus}
                 toDoId={this.props.todo.id}
                 progress={p}
+                index={index}
+                changeProgressOrder={this.props.changeProgressOrder}
+                onDeleteProgress={this.props.onDeleteProgress}
               />
             ))}
             {this.state.showAddProgressInputs && (

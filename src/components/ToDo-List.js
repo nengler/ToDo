@@ -81,6 +81,31 @@ class ToDoList extends Component {
     }));
   };
 
+  handleProgressSwitch = (toDoId, indexMoving, indexBeingMoved) => {
+    let toDoList = [...this.state.toDoList];
+    toDoList.forEach((todo) => {
+      if (todo.id === toDoId) {
+        let temp = todo.progress[indexMoving];
+        todo.progress[indexMoving] = todo.progress[indexBeingMoved];
+        todo.progress[indexBeingMoved] = temp;
+      }
+    });
+    this.setState({ toDoList });
+  };
+
+  hanldeProgressDelete = (toDoId, progressId) => {
+    console.log(toDoId);
+    console.log(progressId);
+    let toDoList = [...this.state.toDoList];
+    toDoList.forEach((todo) => {
+      if (todo.id === toDoId) {
+        todo.progress = todo.progress.filter((el) => el.id !== progressId);
+        console.log(todo.progress);
+      }
+    });
+    this.setState({ toDoList });
+  };
+
   render() {
     return (
       <div className="container">
@@ -107,6 +132,8 @@ class ToDoList extends Component {
               onDelete={this.handleDeleteTodo}
               changeProgressStatus={this.onChangeProgressStatus}
               changeTodoStatus={this.onChangeTodoStatus}
+              changeProgressOrder={this.handleProgressSwitch}
+              onDeleteProgress={this.hanldeProgressDelete}
             />
           ))}
         </div>
